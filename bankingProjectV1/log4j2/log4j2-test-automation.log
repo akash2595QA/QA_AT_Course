@@ -1,0 +1,19 @@
+[INFO ] 2023-08-26 12:47:13.650 [main] Log - Chrome driver is selected
+[INFO ] 2023-08-26 12:47:26.602 [main] Log - Opened the URL
+[INFO ] 2023-08-26 12:47:26.869 [main] Log - Maximized the window
+[INFO ] 2023-08-26 12:47:32.253 [main] Log - Entered Username
+[INFO ] 2023-08-26 12:47:35.549 [main] Log - Entered Password
+[INFO ] 2023-08-26 12:47:44.673 [main] Log - Clicked on Login
+[INFO ] 2023-08-26 12:47:47.004 [main] Log - Clicked on Add new Customer button
+[INFO ] 2023-08-26 12:47:53.161 [main] Log - Entered Name
+[INFO ] 2023-08-26 12:47:53.317 [main] Log - Selected Gender
+[INFO ] 2023-08-26 12:47:54.040 [main] Log - Entered DOB
+[INFO ] 2023-08-26 12:47:54.559 [main] Log - Entered Address
+[INFO ] 2023-08-26 12:47:54.792 [main] Log - Entered City
+[INFO ] 2023-08-26 12:47:55.040 [main] Log - Entered State
+[INFO ] 2023-08-26 12:47:55.288 [main] Log - Entered PIN
+[INFO ] 2023-08-26 12:47:55.583 [main] Log - Entered Mobile
+[INFO ] 2023-08-26 12:47:56.206 [main] Log - Entered mail
+[INFO ] 2023-08-26 12:47:56.476 [main] Log - Entered password
+[INFO ] 2023-08-26 12:47:59.435 [main] Log - Clicked on Submit button
+[INFO ] 2023-08-26 12:48:01.487 [main] Log - Add new Customer Testcase passed
