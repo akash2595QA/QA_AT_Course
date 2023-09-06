@@ -14,7 +14,7 @@ import org.testng.Assert;;
 
 public class LoginHRMUsingTestNG {
 	
-	public static WebDriver driver = new ChromeDriver();;
+	WebDriver driver = new ChromeDriver();
 	@BeforeTest
 	public void setup() 
 	{
