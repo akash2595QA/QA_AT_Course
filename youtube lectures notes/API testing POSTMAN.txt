@@ -1,0 +1,259 @@
+1) Create workspace.
+2)Creating collection(contain number of folders and http requests(get, post, delete, put)).
+- we can create any number of collections under workspace.
+
+Request ---> API ---->Response
+
+http Request:
+Get: retrive resource from database.
+Post: create resource on database.
+Put: update existing resource on database.
+Patch: update partial details of resource.
+Delete: delete existing resource from database.
+
+sample api:
+
+validations:
+- status code
+- time
+- size data
+- response body(json/xml)
+- cookies
+- headers
+
+payload:
+{
+	"name": "pavan",
+	"job": "engineer"
+}
+
+*When u want to send payload
+go to body --> raw --> select json -->paste the payload
+
+*http status codes:
+3 levels 
+a)200 series
+b)400 series
+c)500 series
+
+session 3:
+*Creating our own API
+1)Download NodeJS
+	-npm-node package manager(comes along with NodeJS)
+2)Install json server
+	npm install -g json-server
+3)create students.json file with some data.
+	- open cmd in that location and type command "json-server students.json".
+	- Do no close the window and use the provided localhost:port on your server.
+
+*tests/validation
+JSON - JavaScript Object notation
+- JSON is a syntax for storing and exchanging data.
+- It is designed for human readable data interchange,
+- JSON is text, written with javascript object notation.
+- data will be communicated between client and server through JSON/XML format.
+- eg. txt, pdf files will be converted into JSON/XML format and transferred to Server.
+- Encryption and decryption of the data is only possible when data is in JSON/XML format.
+- Also these are light weighted data files.
+- REST services --> mostly use JSON format, SOAP services --> use XML format.
+- Everything in JSON is in key, value pairs.
+- key should be in double quotations, string values in double quotes, numbers need not be in quotes.
+
+* To capture JSON path we have two tools:
+ 	-jsonpathfinder.com
+	-jsonpath.com
+
+
+*Validatons checks/Assertions:
+- Body
+- cookies info
+- Header
+- status code
+- Time
+- size 
+
+*Add assertions library in Postman
+-->call functions from pm library
+
+*2 diff ways to put functions
+chai assertion Library(chai is name of framework in postman)
+--1) Normal functions:
+pm.test("Test name", function()
+{
+	//assertion;
+}
+);
+
+--2)Arrow functions
+pm.test("Test name", () =>
+{
+	//assertion;
+}
+);
+eg.
+- To test response
+pm.test("Status code is 200", ()=>
+{
+	pm.response.to.have.status(200));
+}
+); 
+
+- to check multiple status code
+pm.test("Successful POST request", ()=>
+{
+	pm.expect.(pm.response.code).to.be.oneOf([201,202]);
+});
+
+-check status code text:
+pm.test("Status code name has string", ()=>
+{
+	pm.response.to.have.status("Created"));
+}
+); 
+
+*we can store the json response body inside variable:
+var json = pm.response.json();
+
+*JSON Schema:
+Suppose we have a data table like
+- eid ename salary
+1  x   y     z
+2  l   m     n
+3  q   w     e
+
+the schema or metadata(data of data) is as below
+eid     integer
+ename   string
+salary  integer
+
+json schema: describing the data type of data that we can store in json file.
+
+we can generate json schema of response body message from online tools:
+
+***To do schema validation in Postman we use tv4.validate
+
+*Scripts:
+- pre request scripts(prs)
+- tests script(ts)
+
+pre request script would be executed before sending the request.
+
+pre request script --> request --> response --> tests script
+ these scrips can be executed at 3 levels
+- collection
+- folder
+- request
+
+****Variables****
+
+scope
+----
+- Global --> accessible in workspace
+- Collection --> accessble within collection
+- Environment --> suppose we have to send request in diff environments like QA, prod so first we have 
+to create environment and in that environemnt we have to create environment variables. 
+To use variable of that environment first we have to switch to that environment.
+- Local --> accessible at request level(in pre request script)
+In pre request script write pm.variables.set("url_local", "https://xyz"); 
+- data ---> external files csv/text.
+
+eg. suppose we declare variable url_global at global level now to access the variable 
+we have to write {{url_global}}
+
+*we can also create global, collection, environment variables in pre request script.
+- local --> pm.variables.set("url_local", "https://xyz");
+- global --> pm.global.set("userid_global", "2");
+- environment --> pm.environment.set(userid_qa_env", "2");
+- collection --> pm.collectionVariables.set(userid_collect", "2");
+
+*remove variables:
+we have to write in test script
+- global --> pm.global.unset("userid_global");
+- environment --> pm.environment.unset("userid_qa_env");
+- collection --> pm.collectionVariables.unset(userid_collect");
+
+* To access variables inside pre request and test scripts use:
+- pm.globals.get("userid_global")
+- pm.environment.get("userid_qa_env")
+
+
+**** Chaining of API:
+- there are two APIS where the response from one API is passed as a request in other API.
+- example the student details that we post from one API, we get ID in response of it which we store
+it in one variable and pass it as a request in other API.
+
+- API chaining defination: When we get any response from one API and we can get the data from response and pass the same data
+to other API request.
+
+to store response in a variable go to "tests" and type command
+var jsonData = JSON.parse(responseBody);
+pm.environment.set("id", jsonData.id);
+
+
+GoRest api
+url: https://gorest.co.in/
+
+endpoints:
+
+POST /public/v2/users	Create a new user
+GET /public/v2/users/2797	Get user details
+PUT|PATCH /public/v2/users/2797	Update user details
+DELETE /public/v2/users/2797	Delete user
+
+generate token for this website and pass it in "authorization" column in the request.(provide it at collection level
+to get its access at collection)
+If we want to access variable inside request body mention {{}} in double quotes and when mentioning it in url do
+not use double quotes.
+
+* To generate random number use the below program in pre request script:
+var random = Math.random().toString(36).substring(2);
+var usermail = "jim"+random+"@gmail.com";
+var username = "jim"+random;
+
+pm.environment.set("email_env", usermail);
+pm.environment.set("user_env", username);
+
+token for 90 days:
+013d1fdaf7c95c63d05d5e272848ef59feecfd3371ea45b2b5c578002c5e667e
+
+***Data driven API testing:
+-- To run data from csv file
+mention it while running the collection in run time, select files option.
+
+
+***Upload file
+In post request go to body --> form-data --> mention KEY as file, select drop down as file and then select the file.
+For uploading multiple files --> mention KEYS as files
+
+*** Types of authentications
+1) Basic Authentication --> here we have to provide username and password in the authentication section under request.
+2) Digest authentication --> similar to basic authentication just username and pass are encrypted here.
+3) Bearer token --> API Key
+4) OAuth 1.0
+5) OAuth 2.0 --> 3 steps involved.
+First we need to send get request with client ID, In response we will get client secret  and code.
+secondly we have to send post request with client id, client secret and code. In response we will get token.
+
+
+***Swagger tool
+--Interactive documentation(not static document).
+In documentatiton we will be able to interact with the API. --> eg. fakeRESTApi
+*What is difference between swagger and Postman:
+-->swagger is used for only exploring the API, not for testing purpose. In swagger we cannot add any validations.
+
+
+
+***CURL(Client/Command line URL)
+Curl is a consolidated string command that contains url along with key and parameters in the same string.
+eg. curl -X GET "URL" -H "accept"
+
+***One of the advantages of postman is we can create documentation directly.
+
+***
+1)If we want to run collection from command prompt then we have to install component called 
+newman and newman-reporter-html(prerequisite is node js)
+--> newman run <collection.json filepath> -r html
+2)run collection remotely using url(generate remote url of your collection using shared link option).
+--> newman run <url> -r html
+3)Through jenkins:
+-->

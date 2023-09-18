@@ -10,7 +10,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentReportBasics {
 
 	public static void main(String[] args) throws IOException {
-		ExtentReports extent = new ExtentReports(); //Extent report Engine
+		ExtentReports extent = new ExtentReports(); //Extent report Engine		
 		
 		//There are 4 types of Extent Reporters which are also called destinations where our our
 		//entire report is printed in its respective format -> one of it is ExtentSparkReporter

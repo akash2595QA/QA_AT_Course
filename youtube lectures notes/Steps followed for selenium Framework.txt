@@ -1,0 +1,64 @@
+1) Created maven project.
+- Added folders viz. Configuration, Logs, Drivers, Screenshot.
+- Added 4 packages(PageObject, Testcases, Utilities and test data)
+- Created PageObject page for Login page()
+2)
+3)Read Data from config file.
+- Put data in config.properties
+- Read data from ReadConfig.java file utility.
+- Use data in base class file by using ReadConfig utility.
+4)Run file from TestNG xml and tell from which browser to run test.
+- Add parameters annotation in the setup method inside baseclass.
+5)Extent report
+- add jars from pom.xml
+- add extent-config.xml file in root directory.
+- add listerner(listener.java) file in utilities dir.
+6)Data Driver testing
+- Created a xlsv file with data
+- In LoginTestDDT java file added Data provider method to read and store data in array from excel file.
+- In the same method called this array method and ran the test.
+7) Add Log4j2
+- Put log4j2.properties file at src/test/resources folder
+- Put Log.java file at utlities folder under scr/test/java
+- then import Log.class in the test cases java class and add Log.info("message").
+
+
+Above is the implementation of the framework.
+Now we can do execution in 4 ways.
+1) Using pom.xml - pom.xml has two purposes, one is to add dependancies(download jar files) and other is to execute the test cases.
+- In pom.xml there are 2 sections:- dependencies(jar files) and plugins(maven compiler plugin and maven sure-fire plugin). Add test case name inside sure-fire plugin also.
+- Now run as maven test.
+
+2)Run test through command line from windows.
+- Install maven on windows.
+- set M2_HOME, MAVEN_HOME and path system variables.
+- Go to project home directory where pom.xml is present.
+- Open cmd and type "mvn clean install" - now your test will run.
+
+3)Run test cases through bat file.
+- Go to project home directory and create run.bat file.
+- Open the file and add the above commands.
+cd <Go to home directory>
+mvn clean install
+- Now execute the bat file by double clicking it.
+
+4)Run test using Jenkins(Continuous Integration)
+-Open Source.
+-two types of projects mainly
+--Freestyle project(run.bat)
+--Using Maven(pom.xml)
+---To run project using maven(pom.xml) you need to do certain settings:
+* Click on Manage Jenkins-->Plugins-->and install maven related plugins.
+* Add java path home: Go to manage Jenkins -->Global tool configuration --> click on JDK installation and add JAVA_HOME path.
+
+5)Git and Git hub:
+untraced files(eclipse working dir) -->tracked files git add()[staging area]-->git commit(locla repository)-->git push(remote repository) 
+- To create an empty local git repository on our machine --> git init
+- To associate our local repo with remote git hub repository --> git remote add origin <"git_hub_url">
+- before commiting files to repo perform below commands once.
+--> git config --global user.name "akash"
+--> git config --global user.email "email id"
+
+
+
+

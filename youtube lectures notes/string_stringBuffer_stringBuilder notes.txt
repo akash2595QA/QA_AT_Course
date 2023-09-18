@@ -1,0 +1,93 @@
+***String and String Buffer
+-->String is immutable(object value is non changable) and String Buffer is muttable(Object value can be changed).
+In String "equals" method is overriden from the object class(In object class 'equals' method and '==' operator both are used to check the reference and not content) and is changed to check the content rather than reference.
+In stringbuffer 'equals' method is not overriden and thus it still checks the reference only.\
+
+***Heap and stack in Strings
+Heap  - when new object is created it is created here
+SCP(Shared constant pool) is in heap area - String literals are created here - not eligible for garbage collection.
+Reference will be maintained by JVM.
+Stack -  reference variables and methods and local variables(variables inside method)
+
+String s = new String("durga") --> 2 object will be created, one in heap and one in SCP
+String s = "durga" --> one object will be created in SCP.
+
+Whenever any string is written in " " it is created in SCP if it is not already present.
+
+In String only there is a concept of SCP and that is the reason strings are immutable because suppose if 1000 references are pointing to same object as per SCP concept and if Strings were mutable then if the value of the object could be changable than 1000's of the variables would point to the changed value which would not be appropriate and that is the reason strings are not allowed to change.
+and String are the most used.
+
+*Thus because of SCP concept we have immutable concept otherwise immutable concept is not required.
+
+*Most commonly used object in java is String object, thus there are special privalege like SCP concept in String.
+
+**In String buffer there is no concept of SCP and thus everytime a new object is created so there is always a seperate object for each instance. This is the reason StringBuffers are mutable i.e. are allowed to change the values in the object as the change in one object wont affect the other references.
+
+*Apart from String objects all Wrapper class objects are also immutable.
+
+*String Methods:
+s.concat()
+s.substring()
+s.indexOf
+s.LastIndexOf
+s.toLowerCase
+s.toUpperCase
+S.equalsIgnoreCase
+s.trim() --> Is used to remove white spaces at the beginning and end of the string.
+eg. String name = sc.nexrLine().trim();
+s.split() --> used to split string seperated by delimeter and stores it in String array.
+
+toString() method is used to convert any object to string.
+
+*Diff between final and immutablity:
+--> Immutability is related to object and final is related to reference variable.In final reference variable we cannot reference the variale to  other reference.
+
+***StringBuffer --> Mutable(All the required changes would be performed in the same object only unlike String where for every change a new object is created)
+If the content keeps on changing we use stringbuffer.
+
+Length - total how many characters are already present. 
+capacity: total how many characters this string/string buffer can hold.
+
+StringBuffer sb = new StringBuffer();
+default initial capacity is 16.
+
+s.append() metod in string buffer is similar to s.concat() method in String.
+
+StringBuffer sb = new StringBuffer(1000); <-- capacity increased to 1000
+
+*methods:
+sb.length()
+sb.capacity()
+sb.charAt(int index)
+sb.setCharAt()
+sb.append() --> adds at last
+sb.insert(index, String/int/boolean)
+sb.delete(int begin, int end)
+
+***String is always thread safe/All immutable objects are thread safe.
+
+*** Diff between StringBuffer and StringBuilder
+prob in String buffer --> every method present in StringBuffer is synchronised. Means threads are required to execute one by one and thus creates performance problems. In Multithreaded env StringBuffer cannot be used.
+
+Because of above problem in stringBuffer StringBuilder was created.
+
+- Most of methods used in StringBuffer are synchronised                     No methods in String Builder is synchronised.
+- At a time only one thread is allowed to operate(thread safety)			At a time multiple threads are allowed to operate(No thread safety)
+- performance low															performance is high
+- Introduced in lower 1.5													above 1.5 version
+
+
+
+String													 StringBuffer								        StringBuilder
+1) If content is fixed and wont change frequently		 Content is not fixed and keep on changing			Content is not fixed and keep on changing			
+														 but thread safety is required.						but multiple threads are allowed to operate simulta.
+														 														 
+														 
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+1) How do we compare screenshots
+2) Do we have to write seperate test method for watch step
+3)Do we have to write test cases in excel
+4)Screenshots which they have attached are very old. so comparing screenshots would be only fail.
+5)Also on multiple failed attempts login is not locked

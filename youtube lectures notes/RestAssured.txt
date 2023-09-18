@@ -1,0 +1,179 @@
+***Restassured is an API/Library (which contains some predefined methods in a jar file) with which we can automate REST API's.
+
+prerequisit:
+- java(java 9+)
+- eclipse
+- Inside eclipse we need TestNG, Maven.
+
+dependencies required in pom.xml(you can refer https://github.com/rest-assured/rest-assured/wiki/GettingStarted)
+- io.restassured
+- json path
+- json
+- gson
+- testng
+- scribe-java-api(to generate random data)
+- json schema validate
+- xml schema validate
+
+***Rest assured by default supports Gerkin language(BDD), no need to install cucumber for it.
+given() ---> prerequisit, content type, cookies, add authentication, parameters
+when() --> request type eg, get, post 
+then() ---> extract response body,extract header cookies, validation status code
+
+given() method does not start with dot but when() and then() start with dot.
+(which ever method is first dot is not required)
+
+- In eclipse class you have to import these static packages manually.(while importing use static keyword)
+import static io.restassured.RestAssured.*
+import static io.restassured.matcher.RestAssuredMatchers.*
+import static org.hamcrest.Matchers.*
+
+get single user: https://reqres.in/api/users/2
+get users list: https://reqres.in/api/users?page=2
+post to create user: https://reqres.in/api/users
+{
+    "name": "morpheus",
+    "job": "leader"
+}
+update user: https://reqres.in/api/users/2
+{
+    "name": "morpheus",
+    "job": "leader"
+}
+delete user: https://reqres.in/api/users/2
+
+***In how many ways can we create body in POST request.
+1) using HashMap
+2) using org.json library
+3) using pojo class(plain old java object)
+4) using external .json file
+
+***Path and query parameter:
+https://reqres.in/api/users?page=2
+https://reqres.in/ --> domain 
+/api/users --> path
+?page=2 --> query parameter
+
+https://reqres.in/api/users?page=2&id=5
+?page=2&id=5 --> query parameter
+
+***Cookies and headers
+
+we can store response in "Response <obj name>" variable:
+Response res = given()
+.when
+.get("https://reqres.in/api/users?page=2&id=5");
+
+res.getCookie() <-- to get cookie info
+res.getHeader("Content-Type")
+
+***log() method
+log().all() --> will print entire response
+log().body() --> will only print bodyfile
+log().cookies() --> will only print cookies
+log().Headers() --> will print only headers
+
+http://restapi.adequateshop.com/api/Traveler?page=1
+
+***Single File upload
+void method()
+{
+File fl = new File(<location of file to upload>);
+given()
+	.multipart("file", fl)	   //similar to form-data(where we upload file) in Postman   //important***
+	.content("multipart/form-data")														//important***
+	
+	.when()
+	post("url")
+	
+	.then()
+
+}
+
+***JSON/XML schema validation:
+
+Diff between Response and schema validation:
+Response validation: Validate the data in the response.
+Schema validation: Validate the type of data in the response. '
+
+To generate JSON schema we use online tool to convert json data into json schema.
+
+* Keep the schema json schema in a file with .json extention inside resources folder.
+Json Response(.json)  ---> Json schema (.json format)
+xml Response(.xml)  ---> xml schema (.xsd)
+
+**We can validate both xml and json schema in Rest Assured, but in Postman xml schema is generrally
+ not possible to validate.
+
+***Serialisation and Deserialisation:
+Serialisation: Converting POJO object into json object.
+Deserialisation: converting json object in POJO object.
+
+There is special library called jackson binder(comes along with RestAssured) used for this
+
+***Authentication and Authorization diff:
+Authentication --> Check user is valid or not.
+Authorization --> User is valid but what are the access privileges/permissions to him.
+
+.auth() method is part of given()
+Basic --> .auth().basic("username", "pass")
+digest --> .auth().digest("username", "pass")
+preemptive --> .auth().preemptive().basic("username", "pass")
+
+Bearer token: we have to create our own token --> part of header
+String bearerToken = <xyz token>
+.headers("Authorization", "Bearer "+bearerToken)
+
+oauth1.0 --> .auth().oauth("consumerKey", "consumerSecret", "accessToken", "tokenSecret")
+oauth2.0 --> .auth().oauth2("<token>")
+APIKey Authentication --> .queryParam("appId", "<token>")  //appID is API Key
+
+
+***Faker Library/API (to generate random/dummy data)
+https://github.com/DiUS/java-faker
+
+add dependancy -->
+<dependency>
+    <groupId>com.github.javafaker</groupId>
+    <artifactId>javafaker</artifactId>
+    <version>1.0.2</version>
+</dependency>
+
+eg.
+Faker faker = new Faker();
+String fullname = faker.name().fullName()
+String firstname = faker.name().firstName()
+String lastname = faker.name().lastName()
+
+***JSON Object and JSON Array
+starts ends with curly brackets {} -- > JSON Object
+starts ends with square brackets [] --> JSON Array
+JSON Object --> JSON Array --> JSON Object
+
+
+***API chaining
+check Eclipse
+ITestContext interface is used within test method parameter to set any variable
+at environment level and use it in other tests/classes.
+
+ITestContext context
+context.setAttribute("user_id", id)  --> can be used at test level
+context.getSuite().setAttribute("user_id", id)  --> can be used at suite level
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -48,7 +48,7 @@ public class BrokenLinksAmazonParallelThreadExecution {
 		}	
 		
 		
-			urlArray.parallelStream().forEach(e -> {
+/*			urlArray.parallelStream().forEach(e -> {
 				try {
 					verifyLink(e);
 				} catch (MalformedURLException e1) {
@@ -57,7 +57,7 @@ public class BrokenLinksAmazonParallelThreadExecution {
 				}
 				
 			});
-			System.out.println(urlArray.size());
+			System.out.println(urlArray.size()); */
 	}
 	public void verifyLink(String url) throws MalformedURLException
 	{

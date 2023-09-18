@@ -4,7 +4,7 @@ public class removeSpacesUsingRepaceAll {
 
 	public static void main(String[] args) {
 		String str = "akash sky ubale";
-		str = str.replace("\s", "");
+		str = str.replace(" ", "");
 		System.out.println(str);
 				
 	}

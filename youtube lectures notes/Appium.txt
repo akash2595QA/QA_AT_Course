@@ -1,0 +1,105 @@
+***Types of Mobile Apps
+- Mobile Web App --> open app through mobile browser(opening amazon.com from browser)
+- Native App --> apps installed from app store google store.(whatsapp, fb)
+- Hybrid App --> combination of native and mobile web apps
+
+Appium is written in Node JS.
+
+- To communicate with iphone, Appium will use UI Automation framework to process the request.
+- To communicate with android, Appium will use UI Automater framework to process the request.
+
+Installations:
+- Android studio.
+* IDE
+* SDK
+* Virtual device/emulators.
+- Appium server/Appium desktop.
+- Appium Client library.
+
+* Set the environment and path variables for Android home, build tools, tools.
+
+* Download Appium clinet library tool for java or any language
+https://jar-download.com/?search_box=io-appium-java-client
+Also download selenium libraries.
+
+*What is APK?
+Android application package(similar to exe) --> installer file
+apkpure.com
+
+*Real devises vs Simulators vs Emulators
+Simulators and emulators are virtual devises.
+Android virtual devises are called Emulators and IOS virtual devises are called Simulators.
+
+**Creating virtual devise using AVD manager in Android studio.
+- Click on Devise manager icon on the right side
+
+**SDK manager & adb.exe and usage
+SDK contains packages that is required for developing and testing android applications.
+adb.exe is a component with the help of which we can install apk on virtual or real devices and
+other usage is we can see what all devises are connected to your system.
+
+**Install apk on Android virtual devices(Emulator).
+1) start Appium server.
+2) Start the Android virtual devise as emulator.
+- go to C:\Users\07psycho\AppData\Local\Android\Sdk\platform-tools and run adb -start-server command in cmd.
+- go to C:\Users\07psycho\AppData\Local\Android\Sdk\emulator and run below commands in cmd
+emulator -list-avds   <----this will show you the divece names
+emulator -avd <device name> <----this will start the mentioned device emulator.
+2) start Appium inspector.
+- keep ip and port default and path as /wd/hub.
+- Fill the desired capalities values and then start the session.
+platformName = Android
+deviceName = <device name>
+app = <path of the apk you want to install>
+
+**Install apk on Android Real devices.
+- Download vysorApp on your mobile as well on desktop.
+VysorApp is used to display mobile screens on your computer.
+- On your mobile enable USB debugging in developer option.
+- connect your mobilr to pc via usb on your pc go to vysor app 
+
+** we can install apk on mobile devices using 3 ways:
+1) Using Appium server(Inspector session)
+2) using adb.exe
+3) using program
+
+2)
+open cmd prmpt
+start server using adb.exe start-server
+C:\Users\admin>adb.exe kill-server
+C:\Users\admin>adb.exe start-server
+
+Verify total devices using adb devices:
+C:\Users\admin>adb.exe devices
+
+Go to apk file directory, Run below cmd to install apk
+<apk file path> Files>adb.exe install ApiDemos.apk
+
+* identifying elements using uiautomator:
+
+
+Set Capability:
+DesiredCapability cap = new DesiredCapability:
+cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
+-------"-----.AUTOMATION_NAME="Uiautomator2"
+-------"-----.DEVICE_NAME="pixel2"
+-------"-----.UDID="emlator-556"
+String appPath = <app path>
+-------"-----.App="<appPath>"
+
+//server setup
+URL url = new URL("http:/0.0.0.0:4723");
+
+//create appium driver session
+AppiumDriver driver = new AppiumDriver(url, cap);
+sysout("driver.getSessionId");
+
+
+
+
+
+
+
+
+
+

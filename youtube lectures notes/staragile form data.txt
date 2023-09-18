@@ -1,0 +1,5 @@
+I am QA Engineer in Manual testing with over 3.4 years of experience.
+
+I have IT work experience of working as QA Engineer(Manual Tester) in an IT firm.
+
+Selenium, Manual Testing and Debugging, Understanding of Java(OCPJP Certified), Cleared CFA level 1, ISTQB CTFL certified, Knowledge of API testing using Postman and Rest Assured tools, Linux Shell scripting,  JIRA, Fix protocol, Good analytical and technical skills, Understanding of Cucumber framework, Git, Maven , TestNG, Jenkins, Appium.

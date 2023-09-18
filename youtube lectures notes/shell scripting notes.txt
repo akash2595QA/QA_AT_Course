@@ -1,0 +1,296 @@
+*Shell: is command interpretor.
+*Shell script: a file which contains valid unix/linux commands
+execute shell script:
+sh <filename>
+
+# is  used for commenting
+
+* exit and save command in vi editor --> wq!
+only exit witout saving --> q!
+
+* read command --> take input from user
+(script to read input from user)
+echo Enter your name
+read name
+echo Your name is : $name 
+
+* Arithmatic operators(+,-,/,\*,%)[\* is used for multiplication]
+to use variables and perform arithmatic operations see below script
+a=10
+b=20
+echo `expr $a + $b`
+echo `expr $a - $b`
+echo `expr $a \* $b`
+echo `expr $a % $b`
+echo `expr $a / $b`
+
+` is not single quote, it is acends symbol which is below esc key.
+
+eg. write a shell script to take two numbers from user and give its sum
+echo "Enter first num"
+read num1
+echo "Enter second num"
+read num2
+
+c= `expr $num1 + $num2`
+echo $c
+
+* Logical operators and relational operators
+Relational operators:
+>  --> -gt
+<  --> -lt
+>= --> -ge
+<= --> -le
+=  --> -eq
+!= --> -ne
+Logical operators:
+And --> -a
+Or  --> -o
+Not --> -n
+
+* Conditional statements
+- Simple if(fi is used to close the if statement)
+write ss to find biggest of two numbers.
+
+echo Enter first num
+read a
+echo read second number 
+echo b`
+if [ $a -gt $b ]
+then
+echo $a is big
+else $b is big
+fi
+
+- if else if
+Write a program to find largest of three numbers.
+
+read a b c
+if [ $a -gt $b -a $a -gt $c ]
+then
+echo $a is largest
+else 
+if [ $b -gt $a -a $b -gt $c ]
+echo $b is largest
+else
+echo $c is largest
+fi
+fi
+
+-nested if
+Write a program to check if a num is a even number or odd numbers(first check if num is positive or negative)
+
+echo Enter a number
+read n
+if [ $n -gt 0 ]
+echo Number is positive
+r=`expr $n % 2`
+if [ $r -eq 0 ]
+echo Number is even
+else
+echo Number is prime
+fi
+else
+echo Number is negative
+fi
+
+** test with if command: is used as a part of the conditional execution of shell command. It checks existence of a file, directory, file permissions and existence of contents in a file.
+It is used along with options 
+-f   --> checks if file is ordinary file, returns true if yes.
+-d  --> checks if file is directory.
+-r or -w or --x --> checks if file is readable, writable or executable.
+-s checks if file size is greater than 0.
+
+Write a shell script to check if file exist or not.
+
+echo enter a filename
+read file
+if test -f $file
+then 
+echo file exists
+else
+echo file does not exist
+fi
+
+
+Write a shell script to check if file is normal file or directory
+
+echo Enter a file/directory name
+read fd
+if test -f $fd
+then
+echo given file is normal file
+else
+if test -d $fd
+then
+echo given file is a directory
+else
+echo neither file nor directory
+fi
+fi
+
+
+Write a program to check file contents or is empty.
+
+echo Enter filename to check
+Read file
+if test -s $file
+then
+echo file has contents
+else
+file has not contents
+fi
+
+***Switch case statement:
+syntax:
+case variable in
+choice 1)
+	statements
+;;
+choice 2)
+	statements
+;;
+choice 3)
+	statements
+esac
+
+example
+calculator operations
+
+echo Enter first and second number
+Read a b
+echo 1. Addition
+echo 2. Multiplication
+read ch
+
+case $ch in
+1)
+c=`expr $a + $b`
+echo Addition is $c
+;;
+2)
+c=`expr $a \* $`
+echo Multiplication is $c
+;;
+echo Invalid choice
+esac
+
+
+**Looping statements:
+-while loop
+syntax:
+while[]
+do
+statement1
+statement2
+done
+
+example: print 10 numbers
+
+i=1
+while [ $i -le 10 ]
+do
+echo $i
+i=`expr $i+1`
+done
+
+example 2: print only even numbers bewtween 1 to 10.
+i=0
+while [ $i -le 10 ]
+do
+echo $i
+i=`expr $i+2`
+done
+
+
+-for loop:
+syntax:
+
+for <variable> in <list of values>
+do
+statement1
+statement2
+done
+
+example 1: print 1 to 5 numbers
+
+for i in 1 2 3 4 5
+do
+echo $i
+i=`expr $i + 1`
+
+** break and continue statements:
+Example for break:
+
+a=0;
+while [ $a -lt 10 ]
+do
+echo $a
+if [ $a -eq 5 ]
+then
+break
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- nested if
+
+

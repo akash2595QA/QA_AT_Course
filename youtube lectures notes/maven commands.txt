@@ -1,0 +1,26 @@
+1)mvn clean
+--> It deletes the target folder from inside the project.
+
+2)mvn compile
+-->It complies(converts it to .class file) the .java from src/main/java and stores it in target/classes folder.
+
+3)mvn test
+-->It complies(converts it to .class file) the .java from src/test/java and stores it in target/test-classes folder.
+
+4) mvn compile test
+-->It complies(converts it to .class file) the .java from src/test/java and src/test/java both and stores it in target/test-classes folder
+and also runs the tests mentiond inside surefire plugin in pom.xml file.
+
+5)mvn package or mvn clean compile test paackage
+--> It repeats step 4 and further creates a build/jar file inside target folder that we can run on any machine.
+
+6)mvn install
+--> apart from repating step 5 and creating jar file inside target folder it also creates jar file inside mvn repository which is in C:\Users\07psycho\.m2\repository(here all the dependencies are downloaded).
+
+
+
+
+
+
+
+

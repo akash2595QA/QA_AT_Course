@@ -1,0 +1,77 @@
+Inerview Sheet:
+
+*****TestNG*****
+
+1) Hard dependency: 
+dependsOnMethods and dependOnGroups --> to make sure if the the tests run after those on who they are dependent. If those cases fail, then these cases are skipped.
+Soft Dependency:
+alwaysRun=true --> if we want to run the tests even if those tests on which we depend fail. Used mainly to order tests.
+
+2)TestNG
+is a testing framework designed to simplify a broad range of testing needs, from unit testing to integration testing. You can write and design test cases in a systematic way. Lot of features like parameters, priority are available.
+
+3)Advantages of testng:
+-Parallel executon: Running test cases side by side to save execution time.
+*Normally when we run tests in testNG, the tests run sequentially on same thread one after other.
+*For parallel we are goin to use 2 parameters/attributes in testNG xml file --> parallel & thread-count
+thread-count <-- mention on how many threads you want all your tests to run.(To run parallel thread-count should be greater than 1)
+parallel = "true"/"false"/"tests"/"methods"/"instances"
+- allows to define dependency, priorities, allow grouping of tests. 
+- Assertion library provided by testng
+- Detailed HTML report.
+- TestNG Listeners
+
+4)How to use parameter in TestNG(We can also provide parameters using DataProviders)
+-In testNG.xml file include
+<parameter name="browser" value="chrome">
+and in Class file under Test annotation include
+@parameters("browser")
+public void parameterisedTest(String browser)
+{
+
+5)TestNG Assertions:
+helps us to verify the test condition in the middle of test run
+- assertEquals
+- assertTrue
+- assertFalse
+- assertNull
+- assertNotNull
+
+6) In testNG Data driven teting could be achieved using DataProviders.
+
+7) How to use groups:
+- In @Test annotaions use (groups ={"SmokeTest"}, {"FunctonalTest"})
+- In testNG.xml file include
+<groups>
+<define name="all">
+	<include name="SmokeTest"/>
+	<include name="FunctionalTest"/>
+<define>
+<run>
+	<include name ="all"/>
+</run>
+</groups>
+
+8) To exclude a method mention <exclude name="method_tet_name">
+
+9) What is the use of @Listener annotaion in TestNG?
+- TestNG listners are used to configure reports and logging. 
+- ItestLisner and IReporter are two listner interfaces.
+- One of the most wide used listeners in TestNG is ITestListner interface.
+- It has methods like onTestStart(), onTestSuccess(), onTestFailure(), onTestSkipped() etc.
+- We should implement this interface creating a listener class of our own.
+- Next we should add the listener annotations(@Listners) in the test class which we want to listen.
+
+10)Reports in TestNG
+index.html, testng-report, testng-result file in test-output folder
+
+11) How to invoke testNG.xml from pom.xml.
+In pom.xml you have to include testng.xml in surefire plugin.
+
+12)How to run TestNG file from command prompt?
+We need to go to folder where testNG jar file is present
+in cmd write--> Java testng.jar <file name>
+
+13)To execute same test case multiple times use invocationCount=10 or any number inside @Test.
+
+

@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-09-06T13:55:34 IST" name="Default suite" finished-at="2023-09-06T13:56:00 IST" duration-ms="26025">
+  <suite started-at="2023-09-08T15:06:47 IST" name="Default suite" finished-at="2023-09-08T15:07:34 IST" duration-ms="47071">
     <groups>
     </groups>
-    <test started-at="2023-09-06T13:55:34 IST" name="Default test" finished-at="2023-09-06T13:56:00 IST" duration-ms="26025">
+    <test started-at="2023-09-08T15:06:47 IST" name="Default test" finished-at="2023-09-08T15:07:34 IST" duration-ms="47071">
       <class name="testng.AssertExampleHRM">
-        <test-method signature="assertExampleMethod()[pri:0, instance:testng.AssertExampleHRM@1aafa419]" started-at="2023-09-06T13:55:34 IST" name="assertExampleMethod" finished-at="2023-09-06T13:56:00 IST" duration-ms="25916" status="PASS">
+        <test-method signature="assertExampleMethod()[pri:0, instance:testng.AssertExampleHRM@1aafa419]" started-at="2023-09-08T15:06:47 IST" name="assertExampleMethod" finished-at="2023-09-08T15:07:34 IST" duration-ms="46918" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- assertExampleMethod -->

@@ -1,6 +1,7 @@
 package stepdefinations;
 import java.time.Duration;
-
+import org.testng.annotations.Test;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,10 +15,13 @@ import io.cucumber.java.en.When;
 public class HRMLogin {
 	
 	public static WebDriver driver = new ChromeDriver();
+
+	@Test
 	@Given("Browser is open")
 	public void browser_is_open() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Akash\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Assert.assertTrue(true);
 	}
 	@Given("application is on Login page")
 	public void application_is_on_login_page() {

@@ -33,7 +33,7 @@ public class ParseJSONResponse
 	
 	
 	//If we want to convert entire response to string we use asString() method
-	//If we want t convert a data in string we use toString() method
+	//If we want to convert a data in string we use toString() method
 	
 	//@Test
 	void testJsonResponseUsingResponseVariable()
@@ -56,7 +56,7 @@ public class ParseJSONResponse
 	void testJsonResponseUsingJSONObject()
 	{
 		
-		//Approach 2 - by using JSON Object
+		//Approach 3 - by using JSON Object
 		Response res =	given()
 			.contentType("ContentType.JSON")
 			.when()
